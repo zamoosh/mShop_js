@@ -7,6 +7,9 @@ User = get_user_model()
 class Category(models.Model):
     name: models.CharField = models.CharField(max_length=300)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name: models.CharField = models.CharField(max_length=300)

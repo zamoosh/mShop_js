@@ -1,7 +1,9 @@
 {% extends "shop/base.html" %}
 
 {% block home %}
-    <h1>
-        Hello this is shopping page!
-    </h1>
+    {% for p in product %}
+        <p>
+            {{ p.name }}
+        </p>
+    {% endfor %}
 {% endblock %}

@@ -1,5 +1,7 @@
 from .imports import *
+from shop.models import Product, Category
 
 
 def index(request):
-    return render(request, "shop/index.html")
+    context = {"product": Product.objects.all()}
+    return render(request, "shop/index.html", context)

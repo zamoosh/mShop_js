@@ -2,13 +2,27 @@ from django.contrib import admin
 from .models import *
 
 
+class ProductAdminInline(admin.TabularInline):
+    model = Product
+    extra = 2
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name",)
+    inlines = [ProductAdminInline]
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "price", "category", "description")
-    list_per_page = 10
+    fieldsets = [
+        ("Product info", {"fields": ["name"]}),
+        ("Product price", {"fields": ["price"]}),
+        ("Product category", {"fields": ["category"]}),
+        ("Product description", {"fields": ["description"]}),
+    ]
+    list_display = ["name", "price", "category", "description"]
+    list_editable = ["description", "category"]
+    ordering = ["price", "name"]
+    list_per_page = 4
 
 
 admin.site.register(Product, ProductAdmin)
