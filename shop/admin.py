@@ -18,6 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
         ("Product price", {"fields": ["price"]}),
         ("Product category", {"fields": ["category"]}),
         ("Product description", {"fields": ["description"]}),
+        ("Product photo", {"fields": ["picture"]}),
     ]
     list_display = ["name", "price", "category", "description"]
     list_editable = ["description", "category"]

@@ -1,5 +1,4 @@
 from .imports import *
-from shop.models import Product, Category
 
 
 def index(request):
