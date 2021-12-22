@@ -1,9 +1,15 @@
 {% extends "shop/base.html" %}
 
 {% block home %}
+    <link rel="stylesheet" href="../../static/shop/index.css">
     {% for p in product %}
-        <p>
-            {{ p.name }}
-        </p>
+        <div>
+            {{ forloop.counter }}
+            {% if p.picture %}
+                <img class="avatar" src="{{ p.picture.url }}" alt="img">
+            {% endif %}
+            Name = {{ p.name }}
+            price = {{ p.price }}
+        </div>
     {% endfor %}
 {% endblock %}
