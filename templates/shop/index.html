@@ -8,7 +8,7 @@
             {% if p.picture %}
                 <img class="avatar" src="{{ p.picture.url }}" alt="img">
             {% endif %}
-            Name = {{ p.name }}
+            <a href="{% url "shop:detail" p.id %}">Name = {{ p.name }}</a>
             price = {{ p.price }}
         </div>
     {% endfor %}

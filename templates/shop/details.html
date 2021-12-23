@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Detail</title>
+    <title>Detail page</title>
+    <link rel="stylesheet" href="../../static/css/mdb.min.css">
+    <link rel="stylesheet" href="../../static/shop/index.css">
 </head>
-<body>
-<p>
-    {{ product.name }} <br>
-    {{ product.price }} <br>
-    {{ product.id }} <br>
-    {{ product.category }} <br>
-</p>
-</body>
-</html>
+<div class="container">
+    {% if product.picture %}
+        <img class="avatar" src="{{ product.picture.url }}" alt="image">
+    {% endif %} <br/>
+    {{ product.name }} <br/>
+    {{ product.price }} <br/>
+    {{ product.id }} <br/>
+    {{ product.category }} <br/>
+    <a class="btn btn-success btn-rounded" href="{% url "shop:cart" product.id %}">add to cart</a>
+</div>
