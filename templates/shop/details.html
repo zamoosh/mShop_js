@@ -11,5 +11,14 @@
     {{ product.price }} <br/>
     {{ product.id }} <br/>
     {{ product.category }} <br/>
-    <a class="btn btn-success btn-rounded" href="{% url "shop:cart" product.id %}">add to cart</a>
+    <form action="{% url 'shop:cart' product.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+        </fieldset>
+        <input class="btn btn-success btn-rounded" type="button" name="cart" id="cart{{ forloop.counter }}"
+               value="{{ product.id }}">
+        <label class="btn btn-success btn-rounded" for="cart{{ forloop.counter }}">add to cart</label><br>
+
+        <a class="btn btn-success btn-rounded" href="{% url "shop:cart" product.id %}">add to cart</a>
+    </form>
 </div>
