@@ -1,6 +1,6 @@
 <head>
     <title>Detail page</title>
-    <link rel="stylesheet" href="../../static/css/mdb.min.css">
+    <link rel="stylesheet" href="../../static/css/mdb.dark.min.css">
     <link rel="stylesheet" href="../../static/shop/index.css">
 </head>
 <div class="container">
@@ -14,7 +14,7 @@
     <form action="{% url 'shop:cart' product.id %}" method="post">
         {% csrf_token %}
         <fieldset>
-            <input type="hidden" name="cart" id="cart{{ forloop.counter }}" value="{{ product.id }}">
+            <input type="hidden" name="cart" id="cart{{ product.id }}" value="{{ product.id }}">
         </fieldset>
         <input type="submit" value="add to cart">
     </form>

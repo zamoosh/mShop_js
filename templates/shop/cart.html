@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
+    <link rel="stylesheet" href="../../static/css/mdb.dark.min.css">
+    <link rel="stylesheet" href="../../static/shop/index.css">
 </head>
 <body>
+<div class="container">
+    <h3>
+        Hello you are in shopping cart {{ user }}!<br/><br/>
+    </h3>
+    <h4>
+        your cart:<br/><br/>
+    </h4>
+    {#    product list#}
+    {% if products %}
+        {% for p in products %}
+            <img class="img-thumbnail" src="{{ p.picture.url }}" alt="picture"><br/><br/>
+            name: {{ p }}<br/><br/>
+            price: {{ p.price }}<br/><br/>
+            category: {{ p.category }}<br/><br/>
+            <hr/>
+        {% endfor %}
+    {% endif %}
 
+    {#    single product#}
+    {% if product %}
+        <img class="img-thumbnail small" src="{{ product.picture.url }}" alt="picture"><br/><br/>
+        name: {{ product }}<br/><br/>
+        price: {{ product.price }}<br/><br/>
+        category: {{ product.category }}<br/><br/>
+        <hr/>
+    {% endif %}
+    <a href="{% url "shop:index" %}">
+        <input class="btn btn-success btn-rounded btn-dark" type="button" value="continue shopping">
+    </a><br/><br/>
+</div>
 </body>
 </html>
