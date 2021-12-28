@@ -18,7 +18,7 @@ class Product(models.Model):
     picture: models.ImageField = models.ImageField(null=True)
 
     def __str__(self):
-        return self.name
+        return self.id
 
 
 User = get_user_model()

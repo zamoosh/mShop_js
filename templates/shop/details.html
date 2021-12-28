@@ -11,10 +11,10 @@
     {{ product.price }} <br/>
     {{ product.id }} <br/>
     {{ product.category }} <br/>
-    <form action="{% url 'shop:cart' product.id %}" method="post">
+    <form action="{% url 'shop:cart' %}" method="post">
         {% csrf_token %}
         <fieldset>
-            <input type="hidden" name="cart" id="cart{{ product.id }}" value="{{ product.id }}">
+            <input type="hidden" name="cart" id="cart" value="{{ product.id }}">
         </fieldset>
         <input type="submit" value="add to cart">
     </form>

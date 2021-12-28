@@ -1,28 +1,13 @@
 from .imports import *
 
 
-def cart(request, p_id):
+def cart(request):
     selected_product = get_object_or_404(Product, id=request.POST['cart'])
+    cookie = ""
     if "product" in request.COOKIES:
-        cookie = request.COOKIES["product"] + "_"
-        cookie += selected_product.name
-        products = []
-        cookies = cookie.split("_")
-        for item in cookies:
-            products.append(Product.objects.get(name=item))
-        context = {
-            "products": products
-        }
-        # order of row 21 and 22 is matter and cookies must set at end...
-        response = render(request, "shop/cart.html", context)
-        response.set_cookie("product", cookie)
-        return response
-    else:
-        # setting the cookies
-        context = {
-            "user": request.user,
-            "product": selected_product
-        }
-        response = render(request, "shop/cart.html", context)
-        response.set_cookie("product", selected_product)
-        return response
+        cookie += request.COOKIES["product"] + "_"
+    cookie += str(selected_product.id)
+    # setting the cookies
+    response = redirect("shop:show_cart")
+    response.set_cookie("product", cookie)
+    return response
