@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Show_Cart</title>
-    <link rel="stylesheet" href="../../static/css/mdb.dark.min.css">
-    <link rel="stylesheet" href="../../static/shop/index.css">
+    <link rel="stylesheet" href="{% static "css/mdb.dark.min.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/index.css" %}">
 </head>
 <body>
 <div class="container">
@@ -17,16 +19,19 @@
     {#    product list#}
     {% if products %}
         {% for p in products %}
-            <img class="img-thumbnail" src="{{ p.picture.url }}" alt="picture">
+            <img id="product_img" class="img-thumbnail" src="{{ p.picture.url }}" alt="picture">
             name: {{ p.name }}<br/><br/>
             price: {{ p.price }}<br/><br/>
             category: {{ p.category }}<br/><br/>
             <hr/>
         {% endfor %}
     {% endif %}
+    <input id="check" type="button" class="btn btn-success btn-rounded btn-dark" value="check cart">
     <a href="{% url "shop:index" %}">
         <input class="btn btn-success btn-rounded btn-dark" type="button" value="continue shopping">
     </a><br/><br/>
 </div>
+<script src="{% static "shop/js/jquery.min.js" %}"></script>
+<script src="{% static "shop/js/index.js" %}"></script>
 </body>
 </html>
