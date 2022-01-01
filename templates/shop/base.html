@@ -1,12 +1,10 @@
-{% load static %}
-
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <title>Home</title>
+    <title>{% block title %}{% endblock %}</title>
     <!-- MDB icon -->
     {#    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>#}
     <!-- Font Awesome -->
@@ -18,12 +16,12 @@
     />
     <!-- MDB -->
     <link rel="stylesheet" href="{% static "css/mdb.dark.min.css" %}">
+    {% block css %}{% endblock %}
 </head>
 <body>
 <!-- Start your project here-->
-
-{% block home %}
-{% endblock %}
+{% include 'menu.html' %}
+{% block body %}{% endblock %}
 
 <!-- End your project here-->
 
@@ -32,5 +30,6 @@
 
 <!-- Custom scripts -->
 <script type="text/javascript"></script>
+{% block js %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}Detail page{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/mdb.dark.min.css" %}">
+    <link rel="stylesheet" href="{% static "shop/css/index.css" %}">
+{% endblock %}
+{% block js %}
+    <script src="{% static "shop/js/jquery.min.js" %}"></script>
+    <script src="{% static "shop/js/index.js" %}"></script>
+{% endblock %}
+{% block body %}
+<div class="container">
+    {% if product.picture %}
+        <img class="avatar" src="{{ product.picture.url }}" alt="image">
+    {% endif %} <br/>
+    {{ product.name }} <br/>
+    {{ product.price }} <br/>
+    {{ product.id }} <br/>
+    {{ product.category }} <br/>
+    <form action="{% url 'shop:cart' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <input type="hidden" name="cart" id="cart" value="{{ product.id }}">
+        </fieldset>
+        <input class="btn btn-success btn-rounded btn-dark" type="submit" value="add to cart">
+    </form>
+</div>
+{% endblock %}

@@ -1,14 +1,11 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Show_Cart</title>
-    <link rel="stylesheet" href="{% static "css/mdb.dark.min.css" %}">
-    <link rel="stylesheet" href="{% static "shop/css/index.css" %}">
-</head>
-<body>
+{% extends "base.html" %}{% load static %}
+{% block title %}Home{% endblock %}
+{% block css %}{% endblock %}
+{% block js %}
+    <script src="{% static "shop/js/jquery.min.js" %}"></script>
+    <script src="{% static "shop/js/index.js" %}"></script>
+{% endblock %}
+{% block body %}
 <div class="container">
     <h3>
         Hello you are in shopping cart {{ user }}!<br/><br/>
@@ -31,7 +28,5 @@
         <input class="btn btn-success btn-rounded btn-dark" type="button" value="continue shopping">
     </a><br/><br/>
 </div>
-<script src="{% static "shop/js/jquery.min.js" %}"></script>
-<script src="{% static "shop/js/index.js" %}"></script>
-</body>
-</html>
+
+{% endblock %}
