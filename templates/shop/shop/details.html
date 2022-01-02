@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load static %}
+{% extends "shop/base.html" %}{% load static %}
 {% block title %}Detail page{% endblock %}
 {% block css %}
     <link rel="stylesheet" href="{% static "css/mdb.dark.min.css" %}">
@@ -9,20 +9,20 @@
     <script src="{% static "shop/js/index.js" %}"></script>
 {% endblock %}
 {% block body %}
-<div class="container">
-    {% if product.picture %}
-        <img class="avatar" src="{{ product.picture.url }}" alt="image">
-    {% endif %} <br/>
-    {{ product.name }} <br/>
-    {{ product.price }} <br/>
-    {{ product.id }} <br/>
-    {{ product.category }} <br/>
-    <form action="{% url 'shop:cart' %}" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <input type="hidden" name="cart" id="cart" value="{{ product.id }}">
-        </fieldset>
-        <input class="btn btn-success btn-rounded btn-dark" type="submit" value="add to cart">
-    </form>
-</div>
+    <div class="container">
+        {% if product.picture %}
+            <img class="avatar" src="{{ product.picture.url }}" alt="image">
+        {% endif %} <br/>
+        <p id="name">name: {{ product.name }} <br/></p>
+        <p id="price">price: {{ product.price }} toman<br/></p>
+        <p id="category">category: {{ product.category }} <br/></p>
+        <form id="form" action="{% url "shop:cart" %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <input type="hidden" name="cart" id="id" value="{{ product.id }}">
+            </fieldset>
+            <input class="btn btn-success btn-rounded btn-dark" type="submit" value="add to cart">
+        </form>
+    </div>
 {% endblock %}
+bro to js

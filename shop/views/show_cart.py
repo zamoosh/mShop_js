@@ -1,6 +1,7 @@
 from .imports import *
 
 
+@csrf_exempt
 def show_cart(request):
     product_names = []
     cookies = request.COOKIES["product"]
@@ -14,4 +15,4 @@ def show_cart(request):
         "products": product_list,
         "user": request.user,
     }
-    return render(request, "shop/show_cart.html", context)
+    return render(request, "shop/shop/show_cart.html", context)

@@ -1,9 +1,10 @@
-{% extends "base.html" %}
+{% extends "shop/base.html" %}{% load static %}
 {% block title %}Home{% endblock %}
-{% block css %}{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "shop/css/index.css" %}">
+{% endblock %}
 {% block js %}{% endblock %}
 {% block body %}
-    <link rel="stylesheet" href="../../static/shop/css/index.css">
     {% for p in product %}
         <div>
             {{ forloop.counter }}
